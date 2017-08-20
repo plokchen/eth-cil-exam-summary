@@ -12,16 +12,25 @@
 		\item If $\mathbf{y}$ is a unit vector then $\langle \mathbf{x}, \mathbf{y} \rangle$ projects $\mathbf{x}$ onto $\mathbf{y}$
 	\end{inparaitem}
 	\item[Outer Product:] $\mathbf{u} \mathbf{v}^\top$, $(\mathbf{u} \mathbf{v}^\top)_{i, j} = \mathbf{u}_i \mathbf{v}_j$
-	\item[Transpose:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$
+	\item[Transpose:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$,  $(\mathbf{A}\mathbf{B})^\top= \mathbf{B}^\top\mathbf{A}^\top$, $(\mathbf{A}+\mathbf{B})^\top= \mathbf{A}^\top + \mathbf{B}^\top$
 	\item[Cross product:] $\vec{a}\times\vec{b}=(a_2b_3-a_3b_2, a_3b_1-a_1b_3, a_1b_2-a_2b_1)^\top$
 \end{compactdesc}
 
 \subsection*{Norms}
-$\|\mathbf{x}\|_0 = |\{i | x_i \neq 0\}|$ \qquad $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} \mathbf{x}_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$\\
-$\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |x_i|^p \right)^{\frac{1}{p}}$\\
-$\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} =\allowbreak \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} = \sqrt{trace(A^\top A)}$\\
-$\|\mathbf{M}\|_1 = \sum_{i,j} | m_{i,j}|$ \qquad $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M})$\\
-$\|\mathbf{M}\|_p = \max_{\mathbf{v} \neq 0} \frac{\|\mathbf{M}\mathbf{v}\|_p}{\|\mathbf{v}\|_p}$ \qquad $\|\mathbf{M}\|_\star = \sum_{i=1}^{\min(m, n)} \sigma_i$
+\begin{inparaitem}
+	\item $\|\mathbf{x}\|_0 = |\{i | x_i \neq 0\}|$
+	\item $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} \mathbf{x}_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$
+	\item $\|\mathbf{u}-\mathbf{v}\|_2 = \sqrt{(\mathbf{u}-\mathbf{v})^\top(\mathbf{u}-\mathbf{v})}$
+	\item $\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |x_i|^p \right)^{\frac{1}{p}}$
+	\item $\mathbf{A} \in \mathbb{R}^{N \times N}, \|\mathbf{A}\|_F =\allowbreak \sqrt{trace(\mathbf{A}\mathbf{A}^\top)}$
+	\item
+	$\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} =\allowbreak \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2}$
+	\item
+	$\|\mathbf{M}\|_1 = \sum_{i,j} | m_{i,j}|$
+	\item $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M})$\\
+	$\|\mathbf{M}\|_p = \max_{\mathbf{v} \neq 0} \frac{\|\mathbf{M}\mathbf{v}\|_p}{\|\mathbf{v}\|_p}$
+	\item $\|\mathbf{M}\|_\star = \sum_{i=1}^{\min(m, n)} \sigma_i$
+\end{inparaitem}
 
 \subsection*{Derivatives}
 $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{x}) = \frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{b}) = \mathbf{b}$ \quad
@@ -32,7 +41,8 @@ $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X} \mathbf{b}) = \
 $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X}^\top \mathbf{b}) = \mathbf{b}\mathbf{c}^\top$\\
 $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\mathbf{x}-\mathbf{b}}{\|\mathbf{x}-\mathbf{b}\|_2}$ \quad
 $\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{x}\|^2_2) = \frac{\partial}{\partial \mathbf{x}} (\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$\\
-$\frac{\partial}{\partial \mathbf{X}}(\|\mathbf{X}\|_F^2) = 2\mathbf{X}$
+$\frac{\partial}{\partial \mathbf{X}}(\|\mathbf{X}\|_F^2) = 2\mathbf{X}$ \quad
+$\frac{\partial}{\partial \mathbf{x}}\log(x) = \frac{1}{x}$
 
 \subsection*{Eigenvalue / -vectors}
 Eigenvalue Problem: $\mathbf{Ax} = \lambda \mathbf{x}$\\
@@ -54,4 +64,7 @@ if $\mathbf{A}$ symmetric: $A = \mathbf{Q} \boldsymbol{\Lambda} \mathbf{Q^\top}$
 	\item $P(x|y) = \frac{P(y|x)P(x)}{P(y)}$ (Bayes' rule)
 	\item $P(x|y) = P(x) \Leftrightarrow P(y|x) = P(y)$ (iff $X$, $Y$ independent)
 	\item $P(x_1, \ldots, x_n) = \prod_{i=1}^n P(x_i)$ (iff IID)
+	\item Variance $Var[X]:= E[(X-\mu_x)^2]:=\sum_{x \in X}(x-\mu_x)^2P(x)$
+	\item expectation $\mu_x := E[X]:=\sum_{x \in X}xP(x)$
+	\item standard deviation $\sigma_x := \sqrt{Var[X]}$
 \end{inparaitem}
